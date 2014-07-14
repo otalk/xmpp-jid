@@ -263,6 +263,7 @@ test('Equal: Full JID, require prepping', function (t) {
     jid2.prepped = false;
 
     t.notOk(xmppjid.equal(jid1, jid2, true));
+    t.ok(xmppjid.equal(jid1, jid2, false));
     t.end();
 });
 
@@ -281,6 +282,7 @@ test('Equal: Bare JID, require prepping', function (t) {
     jid2.prepped = false;
 
     t.notOk(xmppjid.equalBare(jid1, jid2, true));
+    t.ok(xmppjid.equalBare(jid1, jid2, false));
     t.end();
 });
 

@@ -90,6 +90,9 @@ exports.parse = function (jid, trusted) {
 exports.equal = function (jid1, jid2, requirePrep) {
     jid1 = new exports.JID(jid1);
     jid2 = new exports.JID(jid2);
+    if (arguments.length === 2) {
+        requirePrep = true;
+    }
     return jid1.local === jid2.local &&
            jid1.domain === jid2.domain &&
            jid1.resource === jid2.resource &&
@@ -99,6 +102,9 @@ exports.equal = function (jid1, jid2, requirePrep) {
 exports.equalBare = function (jid1, jid2, requirePrep) {
     jid1 = new exports.JID(jid1);
     jid2 = new exports.JID(jid2);
+    if (arguments.length === 2) {
+        requirePrep = true;
+    }
     return jid1.local === jid2.local &&
            jid1.domain === jid2.domain &&
            (requirePrep ? jid1.prepped && jid2.prepped : true);
