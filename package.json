@@ -36,7 +36,7 @@
     "url": "https://github.com/otalk/xmpp-jid.git"
   },
   "scripts": {
-    "test": "node node_modules/covert/bin/cmd.js test/index.js"
+    "test": "grunt tape"
   },
   "testling": {
     "files": [
