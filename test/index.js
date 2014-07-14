@@ -323,9 +323,6 @@ test('Clone JID', function (t) {
 
 test('Invalid arguments', function (t) {
     t.throws(function () {
-        new JID();
-    });
-    t.throws(function () {
         new JID(1234);
     });
     t.end();

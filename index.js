@@ -162,7 +162,7 @@ exports.JID = function JID(localOrJID, domain, resource) {
             resource: resource
         });
     } else {
-        throw new Error('Missing arguments');
+        parsed = {};
     }
 
     this.local = parsed.local || '';
