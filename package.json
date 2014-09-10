@@ -4,7 +4,7 @@
   "version": "1.0.2",
   "author": "Lance Stout <lance@andyet.net>",
   "browser": {
-    "./lib/stringprep": "./lib/stringprep-browser"
+    "./lib/stringprep.js": "./lib/stringprep-browser.js"
   },
   "bugs": "https://github.com/otalk/xmpp-jid/issues",
   "dependencies": {
