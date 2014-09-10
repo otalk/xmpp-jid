@@ -1,7 +1,7 @@
 {
   "name": "xmpp-jid",
   "description": "Parse XMPP URIs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Lance Stout <lance@andyet.net>",
   "browser": {
     "./lib/stringprep.js": "./lib/stringprep-browser.js"
