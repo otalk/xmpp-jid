@@ -156,7 +156,7 @@ exports.JID = function JID(localOrJID, domain, resource) {
     if (localOrJID && !domain && !resource) {
         if (typeof localOrJID === 'string') {
             parsed = exports.parse(localOrJID);
-        } else if (localOrJID instanceof exports.JID) {
+        } else if (localOrJID._isJID || localOrJID instanceof exports.JID) {
             parsed = localOrJID;
         } else {
             throw new Error('Invalid argument type');
@@ -170,6 +170,8 @@ exports.JID = function JID(localOrJID, domain, resource) {
     } else {
         parsed = {};
     }
+
+    this._isJID = true;
 
     this.local = parsed.local || '';
     this.domain = parsed.domain || '';
