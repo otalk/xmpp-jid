@@ -323,6 +323,24 @@ test('Clone JID', function (t) {
     t.end();
 });
 
+test('isBare', function (t) {
+    var jid1 = new JID('local@example.com');
+    var jid2 = new JID('local@example.com/resource');
+
+    t.ok(xmppjid.isBare(jid1));
+    t.notOk(xmppjid.isBare(jid2));
+    t.end();
+});
+
+test('isFull', function (t) {
+    var jid1 = new JID('local@example.com/resource');
+    var jid2 = new JID('local@example.com');
+
+    t.ok(xmppjid.isFull(jid1));
+    t.notOk(xmppjid.isFull(jid2));
+    t.end();
+});
+
 test('Invalid arguments', function (t) {
     t.throws(function () {
         new JID(1234);

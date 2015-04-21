@@ -110,6 +110,22 @@ exports.equalBare = function (jid1, jid2, requirePrep) {
            (requirePrep ? jid1.prepped && jid2.prepped : true);
 };
 
+exports.isBare = function (jid) {
+    jid = new exports.JID(jid);
+
+    var hasResource = !!jid.resource;
+
+    return !hasResource;
+};
+
+exports.isFull = function (jid) {
+    jid = new exports.JID(jid);
+
+    var hasResource = !!jid.resource;
+
+    return hasResource;
+};
+
 exports.escape = function (val) {
     return val.replace(/^\s+|\s+$/g, '')
               .replace(/\\5c/g, '\\5c5c')
