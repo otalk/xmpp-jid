@@ -2,6 +2,12 @@
 
 var StringPrep = require('./lib/stringprep');
 
+// All of our StringPrep fallbacks work correctly
+// in the ASCII range, so we can reliably mark
+// ASCII-only JIDs as prepped.
+var ASCII = /^[\x00-\x7F]*$/;
+
+
 
 function bareJID(local, domain) {
     if (local) {
@@ -57,10 +63,7 @@ exports.parse = function (jid, trusted) {
     var domain = '';
     var resource = '';
 
-    // All of our StringPrep fallbacks work correctly
-    // in the ASCII range, so we can reliably mark
-    // ASCII-only JIDs as prepped.
-    trusted = /^[\x00-\x7F]*$/.test(jid);
+    trusted = trusted || ASCII.test(jid);
 
     var resourceStart = jid.indexOf('/');
     if (resourceStart > 0) {
@@ -178,10 +181,16 @@ exports.JID = function JID(localOrJID, domain, resource) {
             throw new Error('Invalid argument type');
         }
     } else if (domain) {
+        var trusted = ASCII.test(localOrJID) && ASCII.test(domain);
+        if (resource) {
+            trusted = trusted && ASCII.test(resource);
+        }
+
         parsed = exports.prep({
             local: exports.escape(localOrJID),
             domain: domain,
-            resource: resource
+            resource: resource,
+            prepped: trusted
         });
     } else {
         parsed = {};
