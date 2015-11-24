@@ -18,19 +18,19 @@ export declare function isBare(jid: string|JID): boolean;
 export declare function isFull(jid: string|JID): boolean;
 export declare function escape(value: string): string;
 export declare function unescape(value: string): string;
-export declare function create(local: string, domain: string, resource?: string);
+export declare function create(local: string, domain: string, resource?: string): JID;
 
 export declare class JID implements ParsedJID {
     constructor(localOrJID: string|JID, domain?: string, resource?: string);
-    prepped?: boolean;
-    local?: string;
+    prepped: boolean;
+    local: string;
     domain: string;
-    resource?: string;
+    resource: string;
     bare: string;
     full: string;
-    unescapedLocal?: string;
-    unescapedBare?: string;
-    unescapedFull?: string;
+    unescapedLocal: string;
+    unescapedBare: string;
+    unescapedFull: string;
     toString(): string;
     toJSON(): string;
 }
