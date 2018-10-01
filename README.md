@@ -1,12 +1,6 @@
 # XMPP-JID
 **Parse and Create XMPP JIDs**
 
-[![Build Status](https://travis-ci.org/otalk/xmpp-jid.png)](https://travis-ci.org/otalk/xmpp-jid)
-[![Dependency Status](https://david-dm.org/otalk/xmpp-jid.png)](https://david-dm.org/otalk/xmpp-jid)
-[![devDependency Status](https://david-dm.org/otalk/xmpp-jid/dev-status.png)](https://david-dm.org/otalk/xmpp-jid#info=devDependencies)
-
-[![Browser Support](https://ci.testling.com/otalk/xmpp-jid.png)](https://ci.testling.com/otalk/xmpp-jid)
-
 ## What is this?
 
 The `xmpp-jid` module is for both parsing and creating XMPP addresses, which are called JIDs.
@@ -36,14 +30,6 @@ client connection (i.e., a specific connection for the associated "bare JID" acc
 $ npm install xmpp-jid
 ```
 
-## Building bundled/minified version (for AMD, etc)
-
-```sh
-$ make
-```
-
-The bundled and minified files will be in the generated `build` directory.
-
 ## Usage
 
 ```javascript
@@ -69,9 +55,16 @@ var res = new jid.JID('user@example.com');
 
 Correctly working with JIDs can be slightly tricky thanks to Unicode, which requires us
 to use StringPrep to normalize the individual parts of a JID so that we can safely use
-them in comparisons. Unfortunately, we don't have access to StringPrep in browsers, so
+them in comparisons. Unfortunately, we don't have always have access to StringPrep, so
 all `JID` objects are marked with a `prepped` attribute indicating if StringPrep has
 been applied.
+
+To enable full StringPrep application, also add the `node-stringprep` module to your
+dependcies:
+
+```sh
+npm i node-stringprep
+```
 
 Comparisons between JIDs should only be trusted if both JIDs have `prepped` set to `true`.
 
